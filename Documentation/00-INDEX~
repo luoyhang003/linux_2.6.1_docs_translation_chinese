@@ -153,7 +153,7 @@ input/
 	- Linux输入设备信息
 ioctl-number.txt
 	- how to implement and register device/driver ioctl calls.
-	- 怎样实现和注册设备/驱动ioctl调用
+	- 
 isapnp.txt
 	- info on Linux ISA Plug & Play support
 isdn/
