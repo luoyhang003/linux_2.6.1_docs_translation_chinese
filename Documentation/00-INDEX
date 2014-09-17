@@ -156,138 +156,206 @@ ioctl-number.txt
 	- 怎样实现和注册设备/驱动ioctl调用
 isapnp.txt
 	- info on Linux ISA Plug & Play support
+	- Linux支持即插即用的相关信息
 isdn/
 	- directory with info on the Linux ISDN support, and supported cards.
+	- Linux ISDN支持的信息目录
 java.txt
 	- info on the in-kernel binary support for Java(tm)
+	- 在内核层对java支持的信息
 kbuild/
 	- directory with info about the kernel build process
+	- 内核构建信息
 kernel-doc-nano-HOWTO.txt
 	- mini HowTo on generation and location of kernel documentation files.
+	- mini的HowTo文档
 kernel-docs.txt
 	- listing of various WWW + books that document kernel internals.
+	- 不同内核文档列表
 kernel-parameters.txt
 	- summary listing of command line / boot prompt args for the kernel.
+	- 内核命令行/启动提示参数
 ldm.txt
 	- a brief description of LDM (Windows Dynamic Disks).
+	- LDM的简短描述
 locks.txt
 	- info on file locking implementations, flock() vs. fcntl(), etc.
+	- 文件锁的实现信息
 logo.gif
 	- Full colour GIF image of Linux logo (penguin)
+	- Linux Logo
 logo.txt
 	- Info on creator of above logo & site to get additional images from.
+	- logo的相关信息
 m68k/
 	- directory with info about Linux on Motorola 68k architecture.
+	- Motorola 68k架构信息
 magic-number.txt
 	- list of magic numbers used to mark/protect kernel data structures.
+	- 用于保护内核数据结构的"幻数"
 mandatory.txt
 	- info on the Linux implementation of Sys V mandatory file locking.
+	- Linux实现Sys V 强制文件锁的信息
 mca.txt
 	- info on supporting Micro Channel Architecture (e.g. PS/2) systems.
+	- 支持微通道体系结构系统的信息
 md.txt
 	- info on boot arguments for the multiple devices driver
+	- 设备驱动的启动参数
 memory.txt
 	- info on typical Linux memory problems.
+	- 典型Linux内存问题信息
 mips/
 	- directory with info about Linux on MIPS architecture.
+	- Linux MIPS架构信息
 mkdev.cciss
 	- script to make /dev entries for SMART controllers (see cciss.txt)
+	- 脚本文件
 mkdev.ida
 	- script to make /dev entries for Intelligent Disk Array Controllers.
+	- 脚本文件
 moxa-smartio
 	- info on installing/using Moxa multiport serial driver.
+	- 设置/使用 Moxa驱动的相关信息
 mtrr.txt
 	- how to use PPro Memory Type Range Registers to increase performance
+	- 如何使用PPro记忆型范围寄存器来提高性能
 nbd.txt
 	- info on a TCP implementation of a network block device.
+	- 关于TCP实现网络块设备的信息
 networking/
 	- directory with info on various aspects of networking with Linux.
+	- Linux不同网络连接的信息
 nfsroot.txt
 	- short guide on setting up a diskless box with NFS root filesystem
+	- 建立NFS根系统的无盘盒指南
 nmi_watchdog.txt
 	- info on NMI watchdog for SMP systems
+	- SMP系统的NMI看门狗
 oops-tracing.txt
 	- how to decode those nasty internal kernel error dump messages.
+	- 如何解码内核错误转储信息
 paride.txt
 	- information about the parallel port IDE subsystem.
+	- 并行端口集成子系统信息
 parisc/
 	- directory with info on using Linux on PA-RISC architecture.
+	- PA-RISC架构下使用Linux
 parport.txt
 	- how to use the parallel-port driver.
+	- 如何使用并行端口驱动程序
 parport-lowlevel.txt
 	- description and usage of the low level parallel port functions.
+	- 低级并行端口功能的描述和使用
 pci.txt
 	- info on the PCI subsystem for device driver authors
+	- PCI子系统设备驱动作者的信息
 pcwd-watchdog.txt
 	- info and sample code for using with the PC Watchdog reset card.
+	- 使用PC看门狗的信息和示例代码
 pm.txt
 	- info on Linux power management support.
+	- Linux 电源管理系统支持信息
 power/
 	- directory with info on Linux PCI power management.
+	- Linux PCI电源管理信息目录
 powerpc/
 	- directory with info on using Linux with the PowerPC.
+	- 在PowerPC下使用Linux的信息目录
 preempt-locking.txt
 	- info on locking under a preemptive kernel.
+	- 锁定抢占式内核的信息
 ramdisk.txt
 	- short guide on how to set up and use the RAM disk.
+	- 如何设置和使用RAM的简短手册
 riscom8.txt
 	- notes on using the RISCom/8 multi-port serial driver.
+	- 使用RISCom/8的信息
 rocket.txt
 	- info on installing/using the Comtrol RocketPort multiport serial driver
+	- 设置/使用 Comtrol RocketPort的相关信息
 rtc.txt
 	- notes on how to use the Real Time Clock (aka CMOS clock) driver.
+	- 如何使用实时时钟驱动
 s390/
 	- directory with info on using Linux on the IBM S390.
+	- 在IBM S390使用Linux的信息
 sh/
 	- directory with info on porting Linux to a new architecture.
+	- 将Linux移植到新的架构的相关信息
 scsi/
 	- directory with info on Linux scsi support.
+	- Linux对于scsi的支持信息
 serial-console.txt
 	- how to set up Linux with a serial line console as the default.
+	- 如何以默认串行控制台设置Linux
 sgi-visws.txt
 	- short blurb on the SGI Visual Workstations.
+	- SGI Visual Workstation的简介
 smart-config.txt
 	- description of the Smart Config makefile feature.
+	- 智能配置特点的描述
 smp.tex
 	- LaTeX document describing implementation of Multiprocessor Linux
+	- 实现多处理器Linux的LaTex文档
 smp.txt
 	- a few more notes on symmetric multi-processing
+	- 更多关于对称多处理器的信息
 sonypi.txt
 	- info on Linux Sony Programmable I/O Device support.
+	- Linux Sony Programmable I/O设备的支持信息
 sound/
 	- directory with info on sound card support
+	- 声卡支持信息
 sparc/
 	- directory with info on using Linux on Sparc architecture.
+	- Sparc架构下使用Linux的信息目录
 specialix.txt
 	- info on hardware/driver for specialix IO8+ multiport serial card.
+	- specialix IO8+的硬件/驱动信息
 spinlocks.txt
 	- info on using spinlocks to provide exclusive access in kernel.
+	- 关于使用自旋锁的相关信息
 stallion.txt
 	- info on using the Stallion multiport serial driver.
+	- 使用Stallion multiport系列驱动的信息
 svga.txt
 	- short guide on selecting video modes at boot via VGA BIOS.
+	- 通过VGA BIOS选择显示模式的手册
 sx.txt
 	- info on the Specialix SX/SI multiport serial driver.
+	- Specialix SX/SI multiport系列驱动的信息
 sysctl/
 	- directory with info on the /proc/sys/* files
+	- /proc/sys/*下的文件信息
 sysrq.txt
 	- info on the magic SysRq key
+	- 关于magic SysRq key的信息
 telephony/
 	- directory with info on telephony (e.g. voice over IP) support.
+	- 有关telephony的支持信息
 unicode.txt
 	- info on the Unicode character/font mapping used in Linux.
+	- Linux中的Unicode/font表
 usb/
 	- directory with info regarding the Universal Serial Bus.
+	- USB相关信息
 video4linux/
 	- directory with info regarding video/TV/radio cards and linux.
+	- 有关显示/电视/无线电卡的信息
 vm/
 	- directory with info on the Linux vm code.
+	- Linux vm Code信息
 watchdog.txt
 	- how to auto-reboot Linux if it has "fallen and can't get up". ;-)
+	- 如何自动重启Linux
 x86_64/
 	- directory with info on Linux support for AMD x86-64 (Hammer) machines.
+	- Linux对于ADM x86-64的支持信息
 xterm-linux.xpm
 	- XPM image of penguin logo (see logo.txt) sitting on an xterm.
+	- penguin logo
 zorro.txt
 	- info on writing drivers for Zorro bus devices found on Amigas.
+	- 为Zorro总线写驱动的相关信息
 
