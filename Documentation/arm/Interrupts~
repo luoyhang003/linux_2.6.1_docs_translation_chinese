@@ -19,7 +19,7 @@ allow more flexible TLB handling for the future.
 
 Secondly, the IRQ subsystem.
 
-第二，IRQ子系统
+第二，IR子系统
 
 The 2.5 kernels will be having major changes to the way IRQs are handled.
 Unfortunately, this means that machine types that touch the irq_desc[]
