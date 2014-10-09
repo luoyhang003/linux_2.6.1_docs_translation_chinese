@@ -1,6 +1,10 @@
+译者： Andycall(dongtiangche@gmail.com)
+
 The multiple machine support relies on redirecting all functions which will
 need to be machine specific through a table of function pointers, the
 machvec. These functions fall into a number of categories:
+
+多线程的机器(machine)支持通过重定向所有的函数， 通过使用一个列有函数指针的表， machvec。这些函数有下面一些类别
 
  - I/O functions to IO memory (inb etc) and PCI/main memory (readb etc).
  - I/O remapping functions (ioremap etc)
@@ -8,12 +12,25 @@ machvec. These functions fall into a number of categories:
  - a 'heartbeat' function
  - some miscellaneous flags
 
+
+ - I/O 函数到 IO 内存 (inb etc) and PCI/main 内存 (readb etc).
+ - I/O  重测函数 (ioremap etc)
+ - 一些初始化的函数
+ - 一个  '心跳' 函数
+ - 一些其他的标示符
+
 The tree can be built in two ways:
  - as a fully generic build. All drivers are linked in, and all functions
    go through the machvec
  - as a machine specific build. In this case only the required drivers
    will be linked in, and some macros may be redefined to not go through
    the machvec where performance is important (in particular IO functions).
+
+这个树可以通过2种方式来建立
+  - 一个完整的编译， 需要所有的驱动都参与进来， 以及所有的函数都通过machvec
+  - 一个特定机器的编译， 只有需要参与的驱动参与进来， 而且一些宏命令可能需要重新定义来不要通过machvec， 
+  尤其是在那些性能很重要的IO函数。
+
 
 There are three ways in which IO can be performed:
  - none at all. This is really only useful for the 'unknown' machine type,
@@ -26,8 +43,16 @@ There are three ways in which IO can be performed:
    machine vector, and converts an IO address into a memory address, which
    can be read from/written to directly.
 
+这里有3种 IO 表现的方式
+  - 啥都没有。 这个只能用在那些 'unknown' 的机器中， 那些我们还尚未知道的机器， 所以所有的IO函数指令都不会运行。
+  - 完全自定义。 在这种情况， 所有的IO函数都会被自定义是否会运行。
+  - 一些典型的函数。 这个会适用于大部分的情况， 而且会依赖于一个单一的函数， mv_port2addr 。 这个被称为系统向量（machine vector）的函数， 
+  转换所有的IO地址为能够被直接读写的内存地址。
+
 Thus adding a new machine involves the following steps (I will assume I am
 adding a machine called fred):
+
+因此添加一个新的机器（machine）需要下面几步（我会假设我添加一个叫fred的机器）
 
  - add a new file include/asm-sh/io_fred.h which contains prototypes for
    any machine specific IO functions prefixed with the machine name, for
@@ -47,6 +72,18 @@ adding a machine called fred):
    functions will still be needed, so that a module built for a generic
    setup can be loaded.
 
+
+  - 添加一个新的文件 include/asm-sh/io_fred.h， 里面包含着一些包含机器名字的IO函数的原型， 比如fred_inb。
+    这些都是为系统向量（machine vector）所准备的。 另外， 需要一个分块来确定当编译一个机器特定版本的文件。 例如：
+
+      #ifdef __WANT_IO_DEF
+      #define inb  fred_inb
+      ...
+      #endif
+
+    这是一个最小的例子， 然后你有足够的机会去充分利用这些。 尤其是， 通过编译函数原型内的定义，
+    在函数内注明机器的特定版本是可能的。 注意系统变量（machine vector）是依然需要的， 所有一个模块的编译会在一般的安装时被加载
+
  - add a new file arch/sh/kernel/mach_fred.c. This contains the definition
    of the machine vector. When building the machine specific version, this
    will be the real machine vector (via an alias), while in the generic
@@ -58,8 +95,19 @@ adding a machine called fred):
      }
      ALIAS_MV(se)
 
+  - 添加一个新的问价 arch/sh/kernel/mach_fred.c。 这个包含一些系统向量(machine vector)的定义。
+  当安装好对于这个系统的特定版本， 这个就会变成真正在用的系统向量（machine vector）（通过alias）。
+  然而大体上， 版本通常用来初始化系统向量（machine vector）， 而且他们是自由的， 通过给予他们一些最初的数据, 就像这样：
+
+     struct sh_machine_vector mv_fred __initmv = {
+       mv_name: "Fred"
+     }
+     ALIAS_MV(se)
+
  - finally add a file arch/sh/kernel/io_fred.c, which contains
    definitions of the machine specific io functions.
+
+ - 最后添加一个文件 arch/sh/kernel/io_fred.c， 包含着一个机器特定函数的定义。
 
 A note about initialisation functions. Three initialisation functions are
 provided in the machine vector:
@@ -68,6 +116,11 @@ provided in the machine vector:
    initialisation
  - mv_init_pci - currently not used
 
+关于初始化函数的一些建议， 3个初始化函数通常会在系统向量（machine vector）中提供：
+ - mv_arch_init - 在setup_arch调用之前就调用了。。
+ - mv_init_irq - 在init_IRQ调用之前被调用， 在一般 SH interrupt 初始化之后被调用
+ - mv_init_pci - 现在没用
+
 Any other remaining functions which need to be called at start up can be
 added to the list using the __initcalls macro (or module_init if the code
 can be built as a module). Many generic drivers probe to see if the device
@@ -75,3 +128,9 @@ they are targeting is present, however this may not always be appropriate,
 so a flag can be added to the machine vector which will be set on those
 machines which have the hardware in question, reducing the probe to a
 single conditional.
+
+一些剩下的函数同样需要在启动的时候被调用， 他们被添加在一个列表内。
+可以通过 __initcalls marco (或者 module_init 如果代码可以在一个模块内被编译) 来创建列表。
+一个一般的驱动会探查如果当前有设备被插入了。 然后这个动作并不是一直都被允许的。 
+所以在那些有硬件问题的系统内添加一个标志可以添加在系统向量（machine vector）内可以减少
+他们频繁地去调查探查硬件。
